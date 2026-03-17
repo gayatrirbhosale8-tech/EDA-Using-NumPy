@@ -1,3 +1,5 @@
+## STUDENT DATA
+
 # 🧹 Data Preprocessing: Dealing with Missing Values
 
 ---
@@ -168,4 +170,176 @@ df['Missing_Age'] = df['Age'].isnull()
 Handling missing values is essential for building reliable and accurate models. A cleaned dataset significantly improves performance and ensures meaningful insights.
 
 ---
+
+
+
+## CARS93
+
+# 🚗 Data Preprocessing: Handling Missing Values (Cars Dataset)
+
+---
+
+## 📌 Overview
+
+This project focuses on preprocessing the **Cars93 dataset**, specifically handling missing values to improve data quality and make it suitable for analysis and machine learning.
+
+---
+
+## ❓ What are Missing Values?
+
+Missing values are data points that are not recorded or are unavailable in the dataset.
+
+### 🔍 Representations:
+
+* `NaN`
+* `NULL`
+* Blank cells
+* Special placeholders
+
+---
+
+## ⚠️ Why Handle Missing Values?
+
+* 📉 Avoid incorrect analysis
+* ⚙️ Ensure algorithms run smoothly
+* 📊 Improve dataset reliability
+* 🚀 Enhance model performance
+
+---
+
+## 🔎 Dataset Description
+
+### 🗂️ Original Dataset: `Cars93.csv`
+
+* Contains raw car data
+* Includes missing values
+* Not directly suitable for modeling
+
+### 🧼 Updated Dataset: `updated_cars93.csv`
+
+* Cleaned and preprocessed
+* Missing values handled
+* Ready for analysis
+
+---
+
+## 🛠️ Techniques Used
+
+### 1️⃣ Detect Missing Values
+
+```python id="1a9n2b"
+df.isnull().sum()
+```
+
+---
+
+### 2️⃣ Removing Missing Data
+
+```python id="b72kq1"
+# Drop rows with missing values
+df.dropna()
+
+# Drop columns with excessive missing values
+df.dropna(axis=1)
+```
+
+---
+
+### 3️⃣ Imputation Techniques
+
+#### 📊 Mean / Median (Numerical Data)
+
+```python id="z91mqp"
+df['Price'].fillna(df['Price'].mean(), inplace=True)
+```
+
+#### 🏷️ Mode (Categorical Data)
+
+```python id="v5k8ds"
+df['Manufacturer'].fillna(df['Manufacturer'].mode()[0], inplace=True)
+```
+
+---
+
+### 4️⃣ Forward / Backward Fill
+
+```python id="c3x9pl"
+df.fillna(method='ffill', inplace=True)
+df.fillna(method='bfill', inplace=True)
+```
+
+---
+
+### 5️⃣ Interpolation 📈
+
+```python id="x7q2lm"
+df.interpolate(method='linear', inplace=True)
+```
+
+---
+
+### 6️⃣ Advanced Imputation 🤖
+
+```python id="r8w1kf"
+from sklearn.impute import KNNImputer
+
+imputer = KNNImputer(n_neighbors=5)
+df_imputed = imputer.fit_transform(df)
+```
+
+---
+
+## ⚖️ Comparison: Original vs Updated Dataset
+
+| Feature           | 🚗 Original (`Cars93.csv`) | 🧼 Updated (`updated_cars93.csv`) |
+| ----------------- | -------------------------- | --------------------------------- |
+| Missing Values    | ❌ Present                  | ✅ Handled                         |
+| Data Consistency  | ⚠️ Low                     | ✔️ High                           |
+| Data Quality      | Poor                       | Improved                          |
+| Analysis Ready    | ❌ No                       | ✅ Yes                             |
+| Model Performance | Low                        | High                              |
+
+---
+
+## 📊 Key Improvements
+
+### 🔴 Original Dataset
+
+* Contains null values in multiple columns
+* Inconsistent and incomplete data
+* Requires preprocessing
+
+### 🟢 Updated Dataset
+
+* Missing values filled or removed
+* Clean and structured format
+* Ready for ML models and visualization
+
+---
+
+## 📦 Libraries Used
+
+* 🐍 Pandas
+* 🔢 NumPy
+* 🤖 Scikit-learn
+
+---
+
+## 📈 Best Practices
+
+* ✔️ Always check missing values before processing
+* ✔️ Use mean/median for numerical features
+* ✔️ Use mode for categorical features
+* ✔️ Avoid dropping too much data
+* ✔️ Validate results after cleaning
+
+---
+
+## 🎯 Conclusion
+
+Preprocessing the Cars93 dataset by handling missing values significantly improves its usability. The cleaned dataset ensures better insights, smoother computations, and higher model accuracy.
+
+---
+
+
 
