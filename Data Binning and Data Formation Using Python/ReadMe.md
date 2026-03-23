@@ -156,13 +156,4 @@ print(encoded)
 
 ---
 
-# 📚 Requirements
 
-```bash
-pip install pandas numpy scikit-learn
-```
-
----
-
-# 👩‍💻 Author
-Made with ❤️ using Python
